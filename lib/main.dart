@@ -19,11 +19,24 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("新路由页面"),
+      ),
+      body: Center(
+        child: Text("新路由页面的内容"),
+      ),
+    );
+  }
+}
+
 //Statefulwidget至少由两个类组成 1,StatefulWidget类。2, State类；
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
   final String title;
-
   @override
   _MyHomePageState createState() => new _MyHomePageState(); //State类
 }
@@ -59,7 +72,18 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Image.network(
                     'https://avatars3.githubusercontent.com/u/22075669?s=460&u=e12ac5574c57671b6a54a5f8bb2bcd5e784c20f3&v=4'),
-                Text('Image.network')
+                Text('加载网络图'),
+                FlatButton(
+                  child: Text("路由跳转"),
+                  textColor: Colors.red,
+                  onPressed: () {
+                    //导航到新路由
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return NewRoute();
+                    }));
+                  },
+                )
               ],
             ),
           ),
@@ -172,15 +196,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-// void main(){
-//   runApp(
-//     Center(
-//       child: Text(
-//         '你好',
-//         textDirection:TextDirection.ltr,
-//         style:TextStyle(fontSize:26)
-//       ),
-//     )
-//   );
-// }
