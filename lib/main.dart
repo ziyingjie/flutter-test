@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './redroute.dart';
 // import 'package:transparent_image/transparent_image.dart';
 
 void main() => runApp(MyApp());
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           Container(
             margin: EdgeInsets.only(bottom: 12.0),
-            decoration: BoxDecoration(color: Colors.grey),
+            decoration: BoxDecoration(color: Colors.pink),
             child: Column(
               children: <Widget>[
                 Image.network(
@@ -78,16 +79,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   textColor: Colors.red,
                   onPressed: () {
                     //导航到新路由
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return NewRoute();
-                    }));
+                    Navigator.push(
+                        context,
+                        // MaterialPageRoute({
+                        //   WidgetBuilder builder,构建路由页面的具体内容，返回值是一个widget。我们通常要实现此回调，返回新路由的实例。
+                        //   RouteSettings settings,包含路由的配置信息，如路由名称、是否初始路由（首页
+                        //   bool maintainState = true,默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中，
+                        //                          如果想在路由没用的时候释放其所占用的所有资源，可以设置maintainState为false。
+                        //   bool fullscreenDialog = false,新的路由页面是否是一个全屏的模态对话框
+                        // })
+                        MaterialPageRoute(
+                            builder: (context) {
+                              return new RedRoute();
+                            },
+                            fullscreenDialog: true));
                   },
                 )
               ],
             ),
           ),
-          Center(child: CircularProgressIndicator()),
+          // Center(child: CircularProgressIndicator()),
           Container(
             child: new Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -192,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: new Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
