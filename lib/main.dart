@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './redroute.dart';
 // import 'package:transparent_image/transparent_image.dart';
-
+//https://book.flutterchina.club/chapter3/text.html
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
